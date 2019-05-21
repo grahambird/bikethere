@@ -1,1 +1,141 @@
-<p>Test gh-pages</p>
+<html>
+  <head>
+    <title>BikeThere! Cardiff - bike commuting for beginners</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="/css/league-spartan.css" rel="stylesheet">    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">    
+  </head>
+<body>
+    
+      <header class="header-home bg-purple">
+    
+      <div class="container">
+      
+        <h1 class="logo">BikeThere! <span class="logo-town purple">Cardiff</span></h1>
+      
+      </div>
+      
+      </header>
+      
+      <nav class="bg-purple">
+        <div class="container">
+          
+        <ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link" href="index.php">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">How it works</a>
+  </li>
+  <li class="nav-item active">
+    <a class="nav-link" href="route.php">Routes</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="youwillneed.php">What you will need</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Be a ride companion</a>
+  </li>
+</ul>
+        </div>
+      </nav>      
+      <div class="slab bg-white">
+        
+        <div class="container">
+        
+        <h1 class="page-title"><span class="page-title-prefix black">Route 1</span> Llanishen shops to City Hall</h1>
+        
+        <p class="lead">A meandering ride from North Cardiff to the city centre. Mostly flat.</p>
+        
+        <ul class="route-info row">
+          <li class="col route-info-meet"><img class="icon route-info-icon" src="svg/group.svg" /><h3 class="route-info-title purple">Meet at</h3><p class="route-info-text">The Hub, Llanishen</p></li>
+          <li class="col-md-3"><img class="icon route-info-icon" src="svg/wristwatch.svg" /><h3 class="route-info-title purple">Departing</h3><p class="route-info-text">8am, Mondays</p></li>
+          <li class="col-md-3"><img class="icon route-info-icon" src="svg/highway.svg" /><h3 class="route-info-title purple">Distance</h3><p class="route-info-text">4.75 miles</p></li>
+          <li class="col-md-2"><img class="icon route-info-icon" src="svg/chronometer.svg" /><h3 class="route-info-title purple">Time</h3><p class="route-info-text">30 mins</p></li>
+        </ul>
+        
+        <p>Starting on Llanishen high street, this route goes past the Heath train stations and along the edge of Heath Park. Then it goes along the path by the hospital to Gabalfa interchange before joining North Road. Finally onto the Taff Trail for a short stretch into Bute Park before emerging at the Royal Welsh College of Music and Drama and little way further to City Hall. </p>
+        
+        </div>
+        
+      </div>
+      
+      <div class="slab bg-blue">
+        
+        <div class="container">
+          
+          <h2>Route map</h2>
+          
+          <div class="map" id="map" data-gpx-source="r1.gpx" data-map-target="map-inner"><div id="map-inner"></div></div>
+          
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
+    <script src="https://rawgithub.com/mpetazzoni/leaflet-gpx/master/gpx.js"></script>
+    <script type="application/javascript">
+      function display_gpx(elt) {
+        if (!elt) return;
+
+        var url = elt.getAttribute('data-gpx-source');
+        //console.log(url);
+        var mapid = elt.getAttribute('data-map-target');
+        //console.log(mapid);
+        if (!url || !mapid) return;
+
+        function _t(t) { return elt.getElementsByTagName(t)[0]; }
+        function _c(c) { return elt.getElementsByClassName(c)[0]; }
+
+        var map = L.map(mapid);
+        //console.log(map);
+        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: 'Map data &copy; <a href="http://www.osm.org">OpenStreetMap</a>'
+        }).addTo(map);
+
+        //var control = L.control.layers(null, null).addTo(map);
+        
+        //console.log(control);
+
+        new L.GPX(url, {
+          async: true,
+          marker_options: {
+            startIconUrl: 'http://github.com/mpetazzoni/leaflet-gpx/raw/master/pin-icon-start.png',
+            endIconUrl:   'http://github.com/mpetazzoni/leaflet-gpx/raw/master/pin-icon-end.png',
+            shadowUrl:    'http://github.com/mpetazzoni/leaflet-gpx/raw/master/pin-shadow.png',
+          },
+        }).on('loaded', function(e) {
+          var gpx = e.target;
+          map.fitBounds(gpx.getBounds());
+
+        }).addTo(map);
+      }
+      //console.log('boom');
+      display_gpx(document.getElementById('map'));
+    </script>
+          
+          <p><a class="btn btn-outline" href="https://connect.garmin.com/modern/course/24308878">View route on Garmin Connect</a>&nbsp;<a class="btn btn-outline" href="r1.gpx">Download GPX file</a></p>
+          
+        </div>
+      </div>
+      
+      <div class="slab bg-white">
+        
+        <div class="container">
+          
+          <h2>For those about to ride...</h2>
+          
+          <p>...we salute you! Oh, and also don't forget to read our <a href="">rules of the route</a> and check the <a href="">what you will need</a> page.</p>
+          
+        </div>
+      </div>
+      
+<footer>
+  <div class="container">
+    <img class="icon icon-bicycle" src="svg/bicycle.svg" /><img class="icon icon-face" src="svg/happy.svg" />
+    <p>BikeThere! Cardiff is run by volunteers. All riders are responsible for their own safety. Ride companions provide wayfinding and limited mechanical assistance only.</p>
+  <p>Icons made by <a href="https://www.flaticon.com/authors/baianat" title="Baianat">Baianat</a> from <a href="https://www.flaticon.com/" 		    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 		    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
