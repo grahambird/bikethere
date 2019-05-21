@@ -4,5 +4,5 @@
 font-family: 'League Spartan Bold';
 font-style: normal;
 font-weight: normal;
-src: local('League Spartan Bold'), url('/commute/fonts/LeagueSpartan-Bold.woff') format('woff');
+src: local('League Spartan Bold'), url('/fonts/LeagueSpartan-Bold.woff') format('woff');
 }
